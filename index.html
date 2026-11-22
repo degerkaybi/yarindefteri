@@ -1812,7 +1812,7 @@ function removeItem(id){
   var purged=it.rep?purgeFuture(it.id):[];
   if(it.pt){var pjx=findProject(it.pj),tt=pjx&&pjx.todos.filter(function(t){return t.id===it.pt})[0];if(tt)delete tt.due}
   var rec=null;
-  if(it.pj&&!it.pt){var pr=findProject(it.pj);if(pr&&pr.n)rec=deleteProject(pr)}
+  if(it.pj&&!it.pt){var pr=findProject(it.pj);if(pr&&pr.n&&!pr.todos.some(function(t){return todoItem(t)}))rec=deleteProject(pr)}
   queueSave();return {item:it,index:i,purged:purged,rec:rec};
 }
 /* ---------- archive + trash: soft layers, so sync and backup carry them ---------- */
@@ -4583,19 +4583,20 @@ function goToDay(key){closeSheet();go('day',pd(key))}
 function dateOfKey(layer,key){if(layer==='month')return pd(key+'-01');if(layer==='year'||layer==='decade')return new Date(+key,0,1);return pd(key)}
 /* the line a sub-item belongs to: on its page, or (when that line was set aside) in the Archive tab */
 function srcOf(pj){
-  var o=null,a=null;
+  var o=null,a=null,t=null;
   S.items.forEach(function(x){
     if(x.pj!==pj||x.pt)return;
     if(x.layer==='pin')a=a||x;
-    else if(x.layer!=='arch'&&x.layer!=='trash'&&!o)o=x;
+    else if(x.layer==='trash')t=t||x;
+    else if(x.layer!=='arch'&&!o)o=x;
   });
-  return o||a;
+  return o||a||t;
 }
 function srcJump(o){
   closeSheet();
-  if(o.layer==='pin')openNotebook('def');else go(o.layer,dateOfKey(o.layer,o.key));
+  if(o.layer==='pin')openNotebook('def');else if(o.layer==='trash')openArchive('trash');else go(o.layer,dateOfKey(o.layer,o.key));
   setTimeout(function(){
-    var r=document.querySelector(o.layer==='pin'?'[data-aid="'+o.id+'"]':'[data-id="'+o.id+'"]');
+    var r=document.querySelector(o.layer==='pin'||o.layer==='trash'?'[data-aid="'+o.id+'"]':'[data-id="'+o.id+'"]');
     if(r){try{r.scrollIntoView({block:'center'})}catch(e){}r.classList.add('rflash');setTimeout(function(){r.classList.remove('rflash')},2400)}
   },80);
 }
@@ -5312,7 +5313,7 @@ function openArchive(tab){
   if(!list.length)p.appendChild(h('p',{class:'pjempty',text:tab==='arch'?T.archEmpty:T.trashEmpty}));
   var box=h('div',{class:'alist'});
   list.forEach(function(it){
-    var row=h('div',{class:'arow'+(it.done?' done':'')});
+    var row=h('div',{class:'arow'+(it.done?' done':''),'data-aid':it.id});
     row.appendChild(h('div',{class:'atxt'},[h('div',{class:'at',text:dispText(it.text)}),h('div',{class:'am',text:origLabel(it)})]));
     row.appendChild(h('button',{class:'abtn',type:'button',text:T.putBack,onclick:function(){unstash(it);render();toast(T.backed+(origLabel(it)?' · '+origLabel(it):''));openArchive(tab)}}));
     row.appendChild(h('button',{class:'abtn ic','aria-label':tab==='arch'?T.del:T.delForever,title:tab==='arch'?T.del:T.delForever,html:TRASH_I,onclick:function(){
