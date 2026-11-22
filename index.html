@@ -226,6 +226,7 @@ mark.hl{background:var(--hl,rgba(255,214,10,.34));color:inherit;border-radius:4p
 .nbt{flex:none;padding:8px 14px;border-radius:999px;background:var(--chip);font:500 13.5px/1 var(--sans);color:var(--ink-soft);white-space:nowrap}
 .nbt[aria-pressed="true"]{background:var(--blue-wash);color:var(--blue);box-shadow:inset 0 0 0 1.5px var(--blue-soft)}
 .nbt.plus{padding:8px 14px;font-size:17px;line-height:1}
+.nbt.ut,.nbt.defc,.nbfl .nbfc,.nbt.plus{border-radius:8px}.nbt.defc{padding:7px 10px}.nbt.ut,.nbfl .nbfc:not(.defc){padding:8px 10px}.nbt.plus{padding:8px 12px}.nbtabs{gap:8px 5px}.nbt .lki{margin-right:4px}
 .nbt.del{color:var(--danger)}
 .nbt.over{background:var(--blue-soft);color:var(--blue)}
 .nbt.ut{touch-action:manipulation;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
@@ -346,6 +347,7 @@ body.nbdragging .nbtabs .nbt[data-nbtab]{box-shadow:inset 0 0 0 1.5px var(--blue
 .nbt .lki{display:inline-flex;vertical-align:-2px;margin-right:5px;opacity:.7}.nbt .lki svg{display:block}
 .lkp{margin:26px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font:14px/1.5 var(--sans);color:var(--ink-soft)}.lkp h3{margin:0;font:600 16px/1.3 var(--sans);color:var(--ink)}.lkp p{margin:0}.lkbig{color:var(--ink-soft);opacity:.8}
 .pwin{width:100%;max-width:280px;box-sizing:border-box;padding:11px 14px;border-radius:12px;border:1.5px solid var(--rule-strong);background:var(--sheet);font:500 15px/1.2 var(--sans);color:var(--ink);outline:0}.pwin:focus{border-color:var(--blue)}
+.lkpend{padding:8px 12px;border-radius:10px;background:var(--blue-wash);color:var(--blue)!important;font:500 13px/1.4 var(--sans)}
 .lkerr{min-height:1.2em;font:13px/1.3 var(--sans);color:var(--danger)}.lksm{font:12.5px/1.45 var(--sans);color:var(--ink-soft)}.lkdel{font:500 12.5px/1 var(--sans);color:var(--danger);padding:8px}
 .lkf{flex:1 1 100%;display:flex;flex-direction:column;gap:10px;align-items:flex-start}.lkf .pwin{max-width:300px}.lkti{font:600 14px/1.3 var(--sans);color:var(--ink)}.lkf .lksm{margin:0}.lkb{margin:0}
 .lkab{display:inline-flex;align-items:center;gap:6px}.lkab svg{display:block}
@@ -1246,7 +1248,7 @@ var TX={
     hint:'Bir satıra dokunun ve yazmaya başlayın.',still:'hâlâ duruyor',
     carryweek:'geçen haftadan',subOf:'Alt başlık',subs:'Alt başlıklar',carryyear:'geçen yıldan',pastY:'Geçmiş yıllar',tpYear:'Yıl %{P} geçti',tpYearR:'{N} gün kaldı',tpDec:'10 yıl %{P} geçti',tpDecR:'Yıl {K} / 10',carrymonth:'geçen aydan',bring:'buraya alın',
     pull:'bitmeyenleri bugüne alın',wkShort:'H',openDay:'Güne gidin',mprevPh:'bu gün…',mprojects:'Aktif projeler',mexp:'Genişletin',mcol:'Daraltın',moreN:'+{N} daha',days:'Bu ay',noDays:'Bu ay henüz bir güne yazılmadı.',
-    srcGo:'Bağlı olduğu satıra gidin',
+    srcGo:'Bağlı olduğu satıra gidin',lkPendMsg:'Taşıdığınız not, şifreyi yazınca bu sekmeye eklenecek.',
     lkBtn:'Şifre koyun',lkLockNow:'Kilitleyin',lkChange:'Şifreyi değiştirin',lkRemove:'Şifreyi kaldırın',lkSetTi:'Bu sekmeyi şifreleyin',lkSetNote:'Şifrenizi unutursanız bu sekmedeki notlar geri getirilemez; kurtarma kodu yoktur. Notlar bu cihazda ve Drive yedeğinde şifreli saklanır. Açıkken 5 dakika dokunmazsanız sekme kendiliğinden kilitlenir.',lkPw:'Şifre',lkPw2:'Şifre (tekrar)',lkCur:'Şu anki şifre',lkNew:'Yeni şifre',lkGo:'Şifreleyin',lkGoWeak:'Yine de şifreleyin',lkWeak:'Kısa şifre kolay tahmin edilir; en az 6 karakter önerilir.',lkMis:'Şifreler aynı değil',lkEmpty:'Şifreyi yazın',lkBad:'Şifre yanlış',lkFail:'Şifrelenemedi',lkSaved:'Sekme şifrelendi',lkChanged:'Şifre değişti',lkRemoved:'Şifre kaldırıldı',lkLocked:'Sekme kilitlendi',lkAuto:'Şifreli sekmeler kilitlendi',lkPanelTi:'Bu sekme şifreli',lkPanelNote:'Şifrenizi unutursanız notlar geri getirilemez.',lkOpen:'Açın',lkOpening:'Açılıyor…',lkDelTab:'Sekmeyi ve notlarını silin',lkDelSure:'Notlar da silinecek. Emin misiniz?',lkNo:'Bu tarayıcı şifrelemeyi desteklemiyor.',
     openLink:'Linki açın',projects:'Projeler',rename:'Başlığı düzenleyin',pjArch:'Arşiv',pjDrop:'Arşivlemek için buraya bırakın',pjArchived:'Arşivlendi',pjRestore:'Geri alın',pjAttach:'Projeye ekleyin',pjDetach:'Projeden çıkarın',pjNone:'Henüz proje yok',pjAdded:'Projeye eklendi',pinMax:'En fazla 10 not',pinNoRep:'Bu görev taşınamaz',pinTasks:'Taşınan görevler',pinHere:'Bu güne taşıyın',pinToNb:'Zamansız Notlara taşıyın',trashS:'Çöp',pinDropHint:'Post-it dışında tutmak için görevi buraya sürükleyin',pinPick:'Boş post-it taşınamaz',pinSub:'alt madde',calendar:'Takvim',pjNeedTitle:'Önce proje adı yazın',chkS:'+ Madde',bulS:'• Liste',pjNoItems:'madde yok',pjOff:'Nota çevirin',hereS:'Bu güne',tmrwS:'Yarına',nextS:'Ertesi güne',toWeekS:'Haftaya',toMonthS:'Aya',delS:'Silin',tabNotes:'Notlar',project:'Proje',pjNew:'+ Yeni proje',pjUntitled:'Adsız proje',pjTitlePh:'Proje adı',pjEmpty:'Henüz proje yok. Uzun soluklu işler için bir proje açın, maddelere tarih verirseniz o günün defterine de düşer.',pjAdd:'+ Madde ekleyin',pjTodoPh:'Yapılacak…',delTodo:'Maddeyi silin',pjNotes:'Akla gelenler',pjNotesPh:'Not…',pjDel:'Projeyi silin',pjGone:'Proje silindi',pjMake:'Proje yapın',pjOpen:'Projeyi açın',pjDate:'Tarih verin',pjClr:'Tarihi kaldırın',pjDone:'tamam',pjBack:'Projeler',pjMade:'Proje oluşturuldu',here:'Bu güne alın',moveTo:'Güne taşıyın',repeat:'Tekrarlayın',repNone:'Tekrarsız',repW:'Her hafta',repM:'Her ay',repY:'Her yıl',toWeek:'Haftaya alın',toMonth:'Aya alın',tmrw:'Yarına erteleyin',nextday:'Ertesi güne erteleyin',bullet:'• Madde',check2:'☐ Görev',noteClr:'Notu temizleyin',undoCap:'Geri alın',del:'Görevi silin',pins:'Post-it',nb:'Zamansız Notlar',nbAll:'Diğer',nbEvery:'Tüm notlar',nbSortT:'Zamana göre sıralı (yenisi üstte)',nbSortM:'Kendi sıranız',nbDef:'Arşiv',nbAddPh:'Yeni not…',nbTabPh:'Sekme adı',nbNewTab:'Yeni sekme',nbEmpty:'Henüz not yok. Aklınızdakini yukarıya yazın.',nbDefEmpty:'Arşivlemek istediğiniz görevi alttaki defter simgesine sürükleyin ya da satır menüsündeki saat ikonuna basın; alt maddeleri ve notuyla burada bekler.',nbMove:'Taşıyın',nbNone:'Sekmesiz',nbRename:'Adı değiştirin',nbDelTab:'Sekmeyi silin',nbDelSure:'Emin misiniz? Notlar Diğer\'de kalır',nbTabMax:'En fazla 12 sekme',nbGone:'Not silindi',nbMore:'Seçenekler',nbDrag:'Sürükleyin',nbTrash:'Çöp',nbEmptyTrash:'Çöpü boşaltın',nbEmptySure:'Emin misiniz? Dokunun',nbTrashEmpty:'Çöp boş.',nbPerm:'Kalıcı silin',nbMoreTx:'Devamını gösterin',nbLess:'Kısaltın',nbDel:'Silin',pinNew:'+ Yeni',pinDarkT:'Koyu post-it',pinLight:'Sarı post-it',pinPh:'Telefon, alışveriş, aklınıza gelen…',pinTi:'Başlık',pinDel:'Silin',pinGone:'Not silindi',pinMove:'Taşıyın',fs:'Tam ekran',brand:['YARIN','DEFTERİ'],themeLight:'Açık tema',themeDark:'Koyu tema',fsOn:'Açın',fsOff:'Kapatın',fsFail:'Tarayıcı tam ekrana izin vermedi',fsIos:'Tam ekran için Paylaş › Ana Ekrana Ekle deyin, sonra defteri ana ekrandan açın; tarayıcı çubukları olmadan açılır.',pinDay:'Güne',pinWeek:'Haftaya',pinMonth:'Aya',pinSize:'Boyutu sürükleyin',
     deleted:'Silindi',undo:'geri alın',moved:'Taşındı',archive:'Arşiv',arch:'Arşivleyin',archived:'Arşivlendi',trashT:'Silinenler',archEmpty:'Arşivde madde yok.',trashEmpty:'Silinen madde yok.',archNote:'Arşivlenenler sayfalardan kalkar; Zamansız Notlar\u2019daki Arşiv sekmesiyle aynı yerdir.',trashNote:'Silinenler 30 gün burada kalır, sonra kalıcı olarak silinir.',putBack:'Geri koyun',delForever:'Kalıcı silin',emptyTrash:'Silinenleri boşaltın',emptySure:'Emin misiniz? Tekrar dokunun',backed:'Geri konuldu',hideDone:'Bitenleri gizleyin',hidS:'biten gizli',hideAgain:'Bitenleri gizleyin',hideDoneL:'Biten yok',
@@ -1374,7 +1376,7 @@ var TX={
     hint:'Tap a line and start writing.',still:'still here',
     carryweek:'from last week',subOf:'Sub-heading',subs:'Sub-headings',carryyear:'from last year',pastY:'Past years',tpYear:'Year {P}% elapsed',tpYearR:'{N} days left',tpDec:'Decade {P}% elapsed',tpDecR:'Year {K} / 10',carrymonth:'from last month',bring:'bring here',
     pull:'move unfinished to today',wkShort:'W',openDay:'Go to day',mprevPh:'this day…',mprojects:'Active projects',mexp:'Expand',mcol:'Collapse',moreN:'+{N} more',days:'This month',noDays:'Nothing written on a day this month yet.',
-    srcGo:'Go to the line it belongs to',
+    srcGo:'Go to the line it belongs to',lkPendMsg:'The note you moved will be added to this tab once you enter the password.',
     lkBtn:'Add password',lkLockNow:'Lock now',lkChange:'Change password',lkRemove:'Remove password',lkSetTi:'Encrypt this tab',lkSetNote:'If you forget the password, the notes in this tab cannot be recovered; there is no recovery code. Notes are stored encrypted on this device and in your Drive backup. The tab locks itself after 5 minutes without use.',lkPw:'Password',lkPw2:'Password (again)',lkCur:'Current password',lkNew:'New password',lkGo:'Encrypt',lkGoWeak:'Encrypt anyway',lkWeak:'A short password is easy to guess; 6 or more characters is recommended.',lkMis:'Passwords do not match',lkEmpty:'Enter the password',lkBad:'Wrong password',lkFail:'Could not encrypt',lkSaved:'Tab encrypted',lkChanged:'Password changed',lkRemoved:'Password removed',lkLocked:'Tab locked',lkAuto:'Encrypted tabs were locked',lkPanelTi:'This tab is encrypted',lkPanelNote:'If you forget the password, the notes cannot be recovered.',lkOpen:'Open',lkOpening:'Opening…',lkDelTab:'Delete tab and its notes',lkDelSure:'Its notes will be deleted too. Sure?',lkNo:'This browser does not support encryption.',
     openLink:'Open link',projects:'Projects',rename:'Edit title',pjArch:'Archive',pjDrop:'Drop here to archive',pjArchived:'Archived',pjRestore:'Restore',pjAttach:'Add to project',pjDetach:'Remove from project',pjNone:'No projects yet',pjAdded:'Added to project',pinMax:'Up to 10 notes',pinNoRep:"This task can't be moved",pinTasks:'Moved tasks',pinHere:'Move to this day',pinToNb:'Move to Timeless Notes',trashS:'Trash',pinDropHint:'Drag a task here to keep it outside the notes',pinPick:'An empty post-it can\'t be moved',pinSub:'sub-items',calendar:'Calendar',pjNeedTitle:'Give the project a name first',chkS:'+ Item',bulS:'• Bullet',pjNoItems:'no items',pjOff:'Make it a note',hereS:'This day',tmrwS:'Tomorrow',nextS:'Next day',toWeekS:'Week',toMonthS:'Month',delS:'Delete',tabNotes:'Notes',project:'Project',pjNew:'+ New project',pjUntitled:'Untitled project',pjTitlePh:'Project name',pjEmpty:'No projects yet. Start one for long-running work; give an item a date and it also shows up on that day.',pjAdd:'+ Add item',pjTodoPh:'To do…',delTodo:'Delete item',pjNotes:'Ideas',pjNotesPh:'Note…',pjDel:'Delete project',pjGone:'Project deleted',pjMake:'Make project',pjOpen:'Open project',pjDate:'Set date',pjClr:'Remove date',pjDone:'done',pjBack:'Projects',pjMade:'Project created',here:'Move to this day',moveTo:'Move to day',repeat:'Repeat',repNone:'No repeat',repW:'Every week',repM:'Every month',repY:'Every year',toWeek:'Move to week',toMonth:'Move to month',tmrw:'Postpone to tomorrow',nextday:'Postpone a day',bullet:'• Bullet',check2:'☐ Task',noteClr:'Clear note',undoCap:'Undo',del:'Delete task',pins:'Post-it',nb:'Timeless Notes',nbAll:'Other',nbEvery:'All notes',nbSortT:'Sorted by time (newest first)',nbSortM:'Your own order',nbDef:'Archive',nbAddPh:'New note…',nbTabPh:'Tab name',nbNewTab:'New tab',nbEmpty:'No notes yet. Write what is on your mind above.',nbDefEmpty:'Drag a task onto the notebook icon below, or tap the clock icon in its menu, to archive it; it waits here with its sub-items and notes.',nbMove:'Move',nbNone:'No tab',nbRename:'Rename',nbDelTab:'Delete tab',nbDelSure:"Sure? Notes stay in Other",nbTabMax:'Up to 12 tabs',nbGone:'Note deleted',nbMore:'Options',nbDrag:'Drag',nbTrash:'Trash',nbEmptyTrash:'Empty trash',nbEmptySure:'Sure? Tap again',nbTrashEmpty:'Trash is empty.',nbPerm:'Delete forever',nbMoreTx:'Show more',nbLess:'Show less',nbDel:'Delete',pinNew:'+ New',pinDarkT:'Dark post-it',pinLight:'Yellow post-it',pinPh:'A phone number, shopping, a stray thought…',pinTi:'Title',pinDel:'Delete',pinGone:'Note deleted',pinMove:'Move',fs:'Full screen',brand:['TOMORROW’S','NOTEBOOK'],themeLight:'Light theme',themeDark:'Dark theme',fsOn:'Enter',fsOff:'Exit',fsFail:'The browser did not allow full screen',fsIos:'For full screen, tap Share › Add to Home Screen, then open the notebook from there; it opens without browser bars.',pinDay:'To day',pinWeek:'To week',pinMonth:'To month',pinSize:'Drag to resize',
     deleted:'Deleted',undo:'undo',moved:'Moved',archive:'Archive',arch:'Archive',archived:'Archived',trashT:'Deleted',archEmpty:'Nothing archived.',trashEmpty:'Nothing deleted.',archNote:'Archived items leave the pages; this is the same place as the Archive tab in Timeless Notes.',trashNote:'Deleted items stay here for 30 days, then are removed for good.',putBack:'Put back',delForever:'Delete for good',emptyTrash:'Empty deleted',emptySure:'Sure? Tap again',backed:'Put back',hideDone:'Hide done',hidS:'done hidden',hideAgain:'Hide done',hideDoneL:'No done items',
@@ -1631,7 +1633,7 @@ function safeRestore(i){
 }
 function realNb(){var enc={};S.nb.tabs.forEach(function(t){if(t.lk)enc[t.id]=1});var o={};for(var k in S.nb)o[k]=S.nb[k];o.notes=S.nb.notes.filter(function(x){return !x._tour&&!enc[x.tab]});return o}
 /* ---- locked (password) tabs in Zamansız Notlar: AES-GCM, key from PBKDF2; notes of an encrypted tab are stored only as one ciphertext on the tab ---- */
-var LK={},lkAct=Date.now(),LKIT=310000,nbDraftMem='';
+var LK={},lkAct=Date.now(),LKIT=310000,nbDraftMem='',lkPend=null;
 function lkTab(id){return id?(S.nb.tabs.filter(function(t){return t.id===id})[0]||null):null}
 function lkEnc(id){var t=lkTab(id);return !!(t&&t.lk)}
 function lkIsLocked(id){return lkEnc(id)&&!LK[id]}
@@ -3654,20 +3656,37 @@ var LKNOW_I=nbIco('<rect x="5" y="11" width="14" height="9.5" rx="2.2"/><path d=
 var LKKEY_I=nbIco('<circle cx="8" cy="15" r="3.6"/><path d="M10.7 12.5L20 3.5M16 7.5l3 3M13.5 10l2 2"/>');
 var LKOFF_I=nbIco('<rect x="5" y="11" width="14" height="9.5" rx="2.2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.6"/>');
 var PEN_I=nbIco('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>');
+function lkApplyPend(id){
+  var pd0=lkPend;if(!pd0||pd0.tab!==id)return;lkPend=null;
+  var moved=pd0.notes.filter(function(n){return S.nb.notes.indexOf(n)>=0});if(!moved.length)return;
+  moved.forEach(function(n){n.tab=id;delete n.d});queueSave();
+  var nm=(lkTab(id)||{}).name||'';
+  toast(T.moved+' \u00b7 '+nm,{label:T.undo,fn:function(){moved.forEach(function(n,i){var f=pd0.from[pd0.notes.indexOf(n)]||['',undefined];n.tab=f[0];if(f[1])n.d=f[1]});queueSave();nbRedraw()}});
+}
 function lkField(ph,ac){return h('input',{class:'pwin',type:'password',placeholder:ph,'aria-label':ph,autocomplete:ac||'off',spellcheck:'false'})}
 function lkPanel(id){
   var p=h('div',{class:'lkp','data-lkp':id});
   p.appendChild(h('div',{class:'lkbig',html:LKBIG_I}));
   p.appendChild(h('h3',{text:T.lkPanelTi}));
+  if(lkPend&&lkPend.tab===id)p.appendChild(h('p',{class:'lkpend',text:T.lkPendMsg}));
   if(!lkOK()){p.appendChild(h('p',{text:T.lkNo}));return p}
-  var inp=lkField(T.lkPw,'current-password'),err=h('div',{class:'lkerr',role:'alert'}),btn=h('button',{type:'button',class:'sbtn lkgo',text:T.lkOpen}),busy=false;
-  function go(){
-    if(busy||!inp.value)return;
-    busy=true;btn.disabled=true;btn.textContent=T.lkOpening;err.textContent='';
-    lkUnlock(id,inp.value).then(function(){nbRedraw()},function(){busy=false;btn.disabled=false;btn.textContent=T.lkOpen;err.textContent=T.lkBad;inp.select()});
+  var inp=lkField(T.lkPw,'current-password'),err=h('div',{class:'lkerr',role:'alert'}),btn=h('button',{type:'button',class:'sbtn lkgo',text:T.lkOpen}),busy=false,tmr=null,wantErr=false;
+  /* opens by itself once the right password is typed: a silent try after a short pause; the error shows only when Open/Enter is pressed */
+  function go(manual){
+    if(!inp.value)return;
+    if(busy){if(manual)wantErr=true;return}
+    var v=inp.value;busy=true;wantErr=!!manual;
+    if(manual){btn.disabled=true;btn.textContent=T.lkOpening;err.textContent=''}
+    lkUnlock(id,v).then(function(){lkApplyPend(id);nbRedraw()},function(){
+      busy=false;btn.disabled=false;btn.textContent=T.lkOpen;
+      if(wantErr&&inp.value===v){err.textContent=T.lkBad;inp.select()}
+      else if(inp.value!==v)go(false);
+      wantErr=false;
+    });
   }
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
-  btn.addEventListener('click',go);
+  inp.addEventListener('input',function(){err.textContent='';clearTimeout(tmr);tmr=setTimeout(function(){go(false)},450)});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();clearTimeout(tmr);go(true)}});
+  btn.addEventListener('click',function(){clearTimeout(tmr);go(true)});
   p.appendChild(inp);p.appendChild(btn);p.appendChild(err);
   p.appendChild(h('p',{class:'lksm',text:T.lkPanelNote}));
   var sure=false,del=h('button',{type:'button',class:'nbi dng lkdel','data-nbact':'del','aria-label':T.lkDelTab,title:T.lkDelTab,html:TRASH_I,onclick:function(){
@@ -3839,7 +3858,7 @@ function nbDrag(more,row,n,trashMode,closeMenu){
           fb=h('div',{class:'nbtabs nbfl'});
           fb.appendChild(h('div',{class:'nbt nbfc defc evc untc','data-nbtab':'all','aria-label':T.nbAll,html:UNT_I}));
           fb.appendChild(h('div',{class:'nbt nbfc defc','data-nbtab':'def','aria-label':T.nbDef,html:LATER_I}));
-          S.nb.tabs.forEach(function(t){if(lkIsLocked(t.id))return;fb.appendChild(h('div',{class:'nbt nbfc','data-nbtab':t.id,text:t.name}))});
+          S.nb.tabs.forEach(function(t){fb.appendChild(t.lk?h('div',{class:'nbt nbfc','data-nbtab':t.id},[h('span',{class:'lki','aria-hidden':'true',html:LK[t.id]?LKO_I:LKC_I}),h('span',{text:t.name})]):h('div',{class:'nbt nbfc','data-nbtab':t.id,text:t.name}))});
           /* filters on top, trash as the bottom-most strip (closest to the thumb) */
           if(!trashMode)fb.appendChild(h('div',{class:'ntrash nbftr','aria-label':T.nbTrash},[h('span',{class:'ico',html:TRASH_I}),h('span',{class:'lb',text:T.nbTrash})]));
           document.body.appendChild(fb);
@@ -3895,6 +3914,7 @@ function nbDrag(more,row,n,trashMode,closeMenu){
           var to=tid==='all'?'':tid,from=n.tab||'',wasD=n.d;
           if(to===from&&!wasD)return;
           var nm=tid==='all'?T.nbAll:((S.nb.tabs.filter(function(t){return t.id===tid})[0]||{}).name||'');
+          if(lkIsLocked(to)){lkPend={tab:to,notes:[n],from:[[n.tab||'',n.d]]};nbRedraw(to);return}
           n.tab=to;delete n.d;queueSave();nbRedraw();
           toast(T.moved+' · '+nm,{label:T.undo,fn:function(){n.tab=from;if(wasD)n.d=wasD;queueSave();nbRedraw()}});
         }
@@ -3904,6 +3924,7 @@ function nbDrag(more,row,n,trashMode,closeMenu){
 }
 function pageNb(){
   var tabs=S.nb.tabs;
+  if(lkPend&&lkPend.tab!==nbTab)lkPend=null;
   if(nbTab!=='all'&&nbTab!=='every'&&nbTab!=='def'&&nbTab!=='trash'&&!tabs.some(function(t){return t.id===nbTab}))nbTab='all';
   var p=h('div',{class:'nbp'});
   p.appendChild(h('div',{class:'nav'},[h('div',{class:'nslot l'}),h('div',{class:'ncenter'},[h('div',{class:'t'},[h('div',{class:'title',text:T.nb})])]),h('div',{class:'nslot r'})]));
