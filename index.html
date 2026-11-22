@@ -3959,7 +3959,7 @@ function pageNb(){
     var box=h('div',{class:'alist'});
     A.forEach(function(it){
       var rc=recOf(it),n=rc?rc.todos.length:0,meta=origLabel(it)+(n?' · '+n+' '+T.pinSub:'');
-      var row=h('div',{class:'arow'+(it.done?' done':'')});
+      var row=h('div',{class:'arow'+(it.done?' done':''),'data-aid':it.id});
       var atEl=h('div',{class:'at',tabindex:'0',role:'textbox','aria-label':T.rename,text:dispText(it.text)});
       function atEdit(){
         var ta2=h('textarea',{class:'atin',rows:'1',spellcheck:'false','aria-label':T.rename});ta2.value=it.text;
@@ -4581,10 +4581,21 @@ function pjSchedule(pj,key){
 }
 function goToDay(key){closeSheet();go('day',pd(key))}
 function dateOfKey(layer,key){if(layer==='month')return pd(key+'-01');if(layer==='year'||layer==='decade')return new Date(+key,0,1);return pd(key)}
+/* the line a sub-item belongs to: on its page, or (when that line was set aside) in the Archive tab */
+function srcOf(pj){
+  var o=null,a=null;
+  S.items.forEach(function(x){
+    if(x.pj!==pj||x.pt)return;
+    if(x.layer==='pin')a=a||x;
+    else if(x.layer!=='arch'&&x.layer!=='trash'&&!o)o=x;
+  });
+  return o||a;
+}
 function srcJump(o){
-  closeSheet();go(o.layer,dateOfKey(o.layer,o.key));
+  closeSheet();
+  if(o.layer==='pin')openNotebook('def');else go(o.layer,dateOfKey(o.layer,o.key));
   setTimeout(function(){
-    var r=document.querySelector('[data-id="'+o.id+'"]');
+    var r=document.querySelector(o.layer==='pin'?'[data-aid="'+o.id+'"]':'[data-id="'+o.id+'"]');
     if(r){try{r.scrollIntoView({block:'center'})}catch(e){}r.classList.add('rflash');setTimeout(function(){r.classList.remove('rflash')},2400)}
   },80);
 }
@@ -4855,7 +4866,7 @@ function openSheet(it){
   });
   tt.addEventListener('blur',function(){tt.value=it.text;fitTt();render();ttSync()});
   ttSync();
-  var srcO=it.pt&&findProject(it.pj)?originOf(it.pj):null;
+  var srcO=it.pt&&findProject(it.pj)?srcOf(it.pj):null;
   var pdEl=null;
   if(it.pt){
     pdEl=h('div',{class:'pd pdr'},[h('span',{text:itemDate(it)})]);
